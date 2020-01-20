@@ -1,4 +1,4 @@
-#include "DBSCAN.hpp"
+#include <DBSCANFilter.h>
 namespace pcl_dbscan{
 
     DBSCANFilter::DBSCANFilter(float eps, int min)
