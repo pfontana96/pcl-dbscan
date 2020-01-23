@@ -3,14 +3,16 @@
 
 #include <cstdlib>
 #include <iostream>
+#include <pcl/point_types.h>
+#include <pcl/io/pcd_io.h>
 
 namespace pcl_dbscan{
     class DBSCANFilter{
         public:
             
-
+            // DBSCANFilter();
             DBSCANFilter(float eps, int min);
-            ~DBSCANFilter();
+            // ~DBSCANFilter();
 
         private:
 
