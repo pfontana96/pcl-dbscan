@@ -15,7 +15,7 @@ find_package(Boost COMPONENTS filesystem system REQUIRED)
 include_directories(${Boost_INCLUDE_DIRS})
 link_directories(${Boost_LIBRARY_DIRS})
 
-find_package(PCL 1.8 REQUIRED COMPONENTS common io)
+find_package(PCL 1.8 REQUIRED COMPONENTS common io visualization)
 
 include_directories(${PCL_INCLUDE_DIRS})
 link_directories( ${PCL_LIBRARY_DIRS})
@@ -23,11 +23,6 @@ add_definitions(${PCL_DEFINITIONS})
 
 include_directories(inc)
 
-# file(
-#     GLOB_RECURSE
-#     MY_SOURCE_FILES
-#     src/*
-# )
 set(SOURCES
     src/demo
     src/DBSCANFilter.cpp)
@@ -35,9 +30,3 @@ set(SOURCES
 add_executable (demo ${SOURCES})
 
 target_link_libraries(demo ${Boost_LIBRARIES} ${PCL_LIBRARIES})
-
-# target_include_directories(demo inc)
-
-# target_include_directories(demo PUBLIC
-#                             "${PROJECT_BINARY_DIR}"
-#                             ${DBSCAN_INCLUDES})
