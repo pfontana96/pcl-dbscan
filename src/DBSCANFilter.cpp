@@ -1,4 +1,5 @@
 #include <DBSCANFilter.h>
+
 namespace pcl_dbscan{
 
     DBSCANFilter::DBSCANFilter(float eps, int min)
@@ -36,6 +37,9 @@ namespace pcl_dbscan{
                 expandCluster(point, indices);
             }
         }
+
+        cloud_out.points = output_;
+    
     }
 
     void DBSCANFilter::expandCluster(PointXYZId p, std::vector<int> neighbors_ids)
@@ -61,7 +65,10 @@ namespace pcl_dbscan{
                 }
             }
             if(p_1.id == -2)
+            {
                 p_1.id = cluster_;
+                output_.push_back(p_1);
+            }
         }
     }
 

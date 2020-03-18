@@ -9,6 +9,10 @@
 #include <pcl/pcl_macros.h>
 #include <pcl/kdtree/kdtree_flann.h>
 
+#ifdef _OPENMP
+    #include <omp.h>
+#endif
+
 struct PointXYZId {
         PCL_ADD_POINT4D;
         int id;
@@ -35,7 +39,7 @@ namespace pcl_dbscan{
             pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_in_ptr_;
             pcl::KdTreeFLANN<pcl::PointXYZ> tree_;
             std::vector<bool> visited_;
-            std::vector<PointXYZId> output_;
+            std::vector<PointXYZId, Eigen::aligned_allocator<PointXYZId>> output_;
 
             int min_;
             float eps_;
